@@ -31,3 +31,12 @@ group by scalata.scalatore
 order by totScalate desc
 
 
+/*
+5) Per ogni continente, calcolare il numero di scalate effettuate
+da scalatori nati in una nazione di quel continente*/
+  
+SELECT scalatore.cf, scalata.nazione, nazione.continente, count(*)
+FROM scalatore join scalata on scalatore.cf=scalata.scalatore join nazione on nazione.nome=scalata.nazione
+where scalatore.nazioneNascita=scalata.nazione
+group by nazione.continente, nazione.nome
+
