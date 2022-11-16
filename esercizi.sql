@@ -47,7 +47,10 @@ nascita di ogni scalatore nato in un continente diverso
 dall’America, e, solo se egli ha effettuato almeno una scalata,
 affiancare queste informazioni alle nazioni in cui ha effettuato
 scalate.*/
-
+                            /*ESERCIZIO DA FINIRE*/
+SELECT distinct scalatore.cf, scalatore.nazioneNascita, nazione.continente
+FROM scalatore join scalata on scalatore.cf=scalata.scalatore join nazione on nazione.nome=scalata.nazione 
+WHERE nazione.continente!="America"
 
 
 /*7)
@@ -57,3 +60,18 @@ tale numero è maggiore di 1. Nel risultato le nazioni dello
 stesso continente devono essere mostrati in tuple contigue, e
 le tuple relative allo stesso continente devono essere ordinate
 per anno.*/
+
+
+
+/*8)
+Per ogni nazione N, calcolare il numero medio di
+scalate effettuate all’anno in N da scalatori nati in
+nazioni diverse da N.*/
+
+
+
+
+/*9)
+Calcolare gli scalatori tali che tutte le scalate che
+hanno effettuato nella nazione di nascita le hanno
+effettuate quando erano minorenni.*/
