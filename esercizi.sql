@@ -34,9 +34,26 @@ order by totScalate desc
 /*
 5) Per ogni continente, calcolare il numero di scalate effettuate
 da scalatori nati in una nazione di quel continente*/
-  
-SELECT scalatore.cf, scalata.nazione, nazione.continente, count(*)
-FROM scalatore join scalata on scalatore.cf=scalata.scalatore join nazione on nazione.nome=scalata.nazione
-where scalatore.nazioneNascita=scalata.nazione
-group by nazione.continente, nazione.nome
+SELECT   n1.continente, count( distinct scalatore.cf)
+FROM scalatore join nazione n1 on scalatore.nazionenascita=n1.nome join scalata s1 on s1.scalatore=scalatore.cf
+join nazione n2 on s1.nazione=n2.nome
+where n1.continente=n2.continente
+group by n1.continente
 
+
+/*
+6) Calcolare codice fiscale, nazione di nascita, continente di
+nascita di ogni scalatore nato in un continente diverso
+dall’America, e, solo se egli ha effettuato almeno una scalata,
+affiancare queste informazioni alle nazioni in cui ha effettuato
+scalate.*/
+
+
+
+/*7)
+Per ogni nazione e per ogni anno, calcolare il numero di
+scalate effettuate in quella nazione e in quell’anno, ma solo se
+tale numero è maggiore di 1. Nel risultato le nazioni dello
+stesso continente devono essere mostrati in tuple contigue, e
+le tuple relative allo stesso continente devono essere ordinate
+per anno.*/
