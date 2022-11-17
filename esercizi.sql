@@ -75,3 +75,19 @@ nazioni diverse da N.*/
 Calcolare gli scalatori tali che tutte le scalate che
 hanno effettuato nella nazione di nascita le hanno
 effettuate quando erano minorenni.*/
+
+                /*SCALATORI MINORENNI 0*/
+SELECT *
+FROM scalatore join scalata on scalatore.cf=scalata.scalatore join nazione on scalata.nazione=nazione.nome
+WHERE nazioneNascita=scalata.nazione and anno-annoNascita<18
+
+                /*PROVA CON SCALATORI CHE HANNO MENO DI 40 ANNI*/
+select  scalatore,nazionenascita,nazione,scalatore.annoNascita, scalata.anno,count(scalatore) as scalateStessoPaese
+FROM scalatore join scalata on  scalatore.cf=scalata.scalatore 
+where scalata.anno-scalatore.annoNascita<40 and scalata.nazione=scalatore.nazioneNascita
+GROUP BY scalatore,nazionenascita,nazione,scalatore.annoNascita, scalata.anno
+
+
+select  scalatore.cf 
+FROM scalatore join scalata on  scalatore.cf=scalata.scalatore 
+where scalata.anno-scalatore.annoNascita<40 and scalata.nazione=scalatore.nazioneNascita
